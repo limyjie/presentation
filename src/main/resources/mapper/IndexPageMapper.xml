@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lucas.blog.dao.IndexPageDAO">
+
+    <sql id="indexPageColumn">
+        project_id,head_1,head_1_text,head_2,head_2_text,
+        head_31,head_31_text,head_31_img,
+        head_32,head_32_text,head_32_img,
+        head_33,head_33_text,head_33_img
+    </sql>
+
+    <resultMap id="indexPageMap" type="org.lucas.blog.entity.IndexPage">
+        <id column="project_id" property="projectId"/>
+        <result column="head_1" property="head_1"/>
+        <result column="head_1_text" property="head_1_text"/>
+        <result column="head_2" property="head_2"/>
+        <result column="head_2_text" property="head_2_text"/>
+        <result column="head_31" property="head_31"/>
+        <result column="head_31_text" property="head_31_text"/>
+       <result column="head_31_img" property="head_31_img"/>
+
+        <result column="head_32" property="head_32"/>
+        <result column="head_32_text" property="head_32_text"/>
+        <result column="head_32_img" property="head_32_img"/>
+
+        <result column="head_33" property="head_33"/>
+        <result column="head_33_text" property="head_33_text"/>
+        <result column="head_33_img" property="head_33_img"/>
+        
+    </resultMap>
+
+    <select id="selectIndexPageByProjectId" resultMap="indexPageMap">
+      SELECT <include refid="indexPageColumn"/>
+      FROM tb_index_page
+      WHERE project_id=#{projectId}
+    </select>
+
+    <update id="updateImgPath">
+        UPDATE tb_index_page
+        SET
+            <choose>
+                <when test="imgPlace =='upImg_1'">
+                  head_31_img = #{imgPath}
+                </when>
+                <when test="imgPlace=='upImg_2'">
+                    head_32_img = #{imgPath}
+                </when>
+                <when test="imgPlace=='upImg_3'">
+                    head_33_img = #{imgPath}
+                </when>
+                <otherwise>
+
+                </otherwise>
+            </choose>
+    </update>
+
+
+
+</mapper>

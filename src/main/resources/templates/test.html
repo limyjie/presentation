@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆弹框</title>
+    <link rel="stylesheet" href="/static/materialize/css/materialize.min.css"/>
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="http://www.materializecss.cn/bin/materialize.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal();
+        });
+       /* var getModel = document.getElementById("modal1");*/
+
+    </script>
+</head>
+<body>
+
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn" href="#modal1">模态</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>模态标题</h4>
+        <p>一堆文本</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">同意</a>
+    </div>
+</div>
+
+</body>
+</html>
